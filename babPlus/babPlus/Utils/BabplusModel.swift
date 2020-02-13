@@ -16,7 +16,7 @@ struct BabMenu: Decodable {
 
 struct Content: Decodable {
     let name, lat, lon, tag: String
-    let imageURL: String?
+    let image: String?
     let address: String
     let menus: Menus
     
@@ -27,7 +27,7 @@ struct Menus: Codable {
     let lunch, dinner: [String]
 }
 
-struct ContentImage {
+struct ContentImage: Codable {
     let name: String
-    let image: UIImage?
+    let imageData: Data?
 }
