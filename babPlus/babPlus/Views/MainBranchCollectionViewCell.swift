@@ -69,11 +69,17 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(branchName name: String) {
-        if let i = Constants.APPDELEGATE.storeImage.first(where: { $0.name == name }) {
-            branchImage.image = i.image
+        guard let cacheData = UserDefaultHelper().getImage() else { return }
+        if let i = cacheData.first(where: { $0.name == name }) {
+            branchName.text = i.name
+            if i.imageData == nil {
+                branchImage.image = UIImage(named: "logo")
+            } else {
+                branchImage.image = UIImage(data: i.imageData!)
+            }
+            
         }
-        
-        branchName.text = name
+
     }
     
 }
