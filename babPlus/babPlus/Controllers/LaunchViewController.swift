@@ -51,6 +51,13 @@ class LaunchViewController: UIViewController {
         RequestHelper().reqTask(path: "menu", method: "GET") {
             (result) in
             APPDELEGATE.dummy = result
+            let imageData: [ContentImage] = result.contents.map {
+                if let url = URL(string: $0.image ?? ""), let data = try? Data(contentsOf: url) {
+                    return ContentImage(name: $0.name, imageData: data)
+                }
+                return ContentImage(name: $0.name, imageData: nil)
+            }
+            UserDefaultHelper().addData(contentImg: imageData)
 //            APPDELEGATE.storeImage = result.contents.map {
 //                let image: UIImage?
 //                if let url = URL(string: $0.image ?? ""), let data = try? Data(contentsOf: url) {
