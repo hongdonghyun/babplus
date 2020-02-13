@@ -14,13 +14,12 @@ class MainViewController: UIViewController {
     
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
-        let padding:CGFloat = 10
-        let margin:CGFloat = 20
-        let itemCount:CGFloat = 2
+        let padding: CGFloat = 10
+        let margin: CGFloat = 20
+        let itemCount: CGFloat = 2
         let frameWidth = view.frame.width
-        
-        let contentWidth:CGFloat = frameWidth - (margin * 2) - (padding * (itemCount - 1))
-        let itemWidth:CGFloat = (contentWidth / itemCount).rounded(.down)
+        let contentWidth: CGFloat = frameWidth - (margin * 2) - (padding * (itemCount - 1))
+        let itemWidth: CGFloat = (contentWidth / itemCount).rounded(.down)
         
         flowLayout.minimumInteritemSpacing = padding
         flowLayout.minimumLineSpacing = padding
@@ -126,9 +125,12 @@ extension MainViewController: UISearchBarDelegate {
             branchList.removeAll()
             guard let contents = Constants.APPDELEGATE.dummy?.contents else { return }
             for element in contents {
-                if element.name.contains(searchText) || element.menus.lunch.contains(searchText) || element.menus.dinner.contains(searchText){
+                if element.name.contains(searchText) ||
+                    (element.menus.lunch.first(where: { $0.contains(searchText) }) != nil) ||
+                    (element.menus.dinner.first(where: { $0.contains(searchText) }) != nil) {
                     branchList.append(element.name)
                 }
+
             }
             
         }
