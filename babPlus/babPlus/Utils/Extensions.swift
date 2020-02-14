@@ -13,14 +13,9 @@ enum AssetsColor {
     case babplusBackground
     case babplusCellBackground
     case babplusTextColor
-}
-
-extension UIColor {
-//    static var backColor: UIColor {
-//        UIColor(named: "BabplusBackground")
-//    }
-    static func appColor(_ name: AssetsColor) -> UIColor {
-        switch name {
+    
+    func getColor() -> UIColor {
+        switch self {
         case .babplusBackground:
             return UIColor(named: "BabplusBackground")!
         case .babplusCellBackground:
@@ -29,5 +24,5 @@ extension UIColor {
             return UIColor(named: "BabplusTextColor")!
         }
     }
-    
 }
+

@@ -29,12 +29,6 @@ class UserDefaultHelper {
         return try? decoder.decode([ContentImage].self, from: data)
     }
     
-    
-    
-    func isEmpty(_ key: keyEnums) -> Bool {
-        return (userDefault.object(forKey: key.rawValue) as? Data)?.isEmpty ?? true
-    }
-    
     func addData(str: String) {
         
     }
@@ -55,12 +49,12 @@ class UserDefaultHelper {
         
     }
     
-    private func imageEncode(imageArray: [ContentImage]) -> Data? {
-        return try? encoder.encode(imageArray)
-        
+    private func isEmpty(_ key: keyEnums) -> Bool {
+        return (userDefault.object(forKey: key.rawValue) as? Data)?.isEmpty ?? true
     }
     
-    private func imageDecode(iamgeArray: [ContentImage]) {
+    private func imageEncode(imageArray: [ContentImage]) -> Data? {
+        return try? encoder.encode(imageArray)
         
     }
 }
