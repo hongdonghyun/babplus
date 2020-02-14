@@ -14,11 +14,6 @@ class BranchDetailViewController: UIViewController {
     private let mapContainerView = UIView()
     private let mapView: MKMapView = {
         let mapView = MKMapView()
-        let region = MKCoordinateRegion(
-            center: CLLocationCoordinate2DMake(Constants.mapCenterlat, Constants.mapCenterlon),
-            span: Constants.span
-        )
-        mapView.setRegion(region, animated: true)
         return mapView
     }()
     private let menuTableView: UITableView = {
@@ -37,7 +32,8 @@ class BranchDetailViewController: UIViewController {
         label.textColor = .darkGray
         return label
     }()
-    private lazy var menuArray = Constants.APPDELEGATE.dummy?.contents.filter({ $0.name == self.receiveBranchName }).first
+
+    private lazy var menuArray = Constants.APPDELEGATE.dummy?.contents.first(where: { $0.name == self.receiveBranchName })
     
     public var receiveAddress = ""
     public var receiveBranchName = ""
@@ -46,7 +42,6 @@ class BranchDetailViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.title = receiveBranchName
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "lessthan"), style: .plain, target: self, action: #selector(didTapBackButtonItem(_:)))
         setupUI()
     }
     
@@ -109,20 +104,29 @@ extension BranchDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         var sectionCount = 0
-        if !menuArray!.menus.lunch.isEmpty { sectionCount += 1 }
-        if !menuArray!.menus.dinner.isEmpty { sectionCount += 1 }
+        guard let menus = menuArray?.menus else { return sectionCount }
+        if !menus.lunch.isEmpty { sectionCount += 1 }
+        if !menus.dinner.isEmpty { sectionCount += 1 }
         return sectionCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath)
-        if indexPath.section == 0 {
-            cell.textLabel?.text = menuArray!.menus.lunch[indexPath.row]
-        } else {
-            cell.textLabel?.text = menuArray!.menus.dinner[indexPath.row]
+        var text: String? {
+            guard let menus = menuArray?.menus else { return nil }
+            
+            if indexPath.section == 0 {
+                guard menus.lunch.count > indexPath.row else { return nil }
+                return menus.lunch[indexPath.row]
+            } else {
+                guard menus.dinner.count > indexPath.row else { return nil }
+                return menus.dinner[indexPath.row]
+            }
         }
+        
+        cell.textLabel?.text = text
         cell.textLabel?.font = .systemFont(ofSize: 15)
-        cell.backgroundColor = .appColor(.babplusCellBackground)
+        cell.backgroundColor = AssetsColor.babplusCellBackground.getColor()
         return cell
     }
 }
@@ -139,8 +143,8 @@ extension BranchDetailViewController {
                 return print(error!.localizedDescription)
             }
             guard let place = placeMark?.first,
-            let location = place.location else { return }
-
+                let location = place.location else { return }
+            
             let latitude = location.coordinate.latitude
             let longitude = location.coordinate.longitude
             

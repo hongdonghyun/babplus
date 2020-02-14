@@ -30,7 +30,7 @@ class MainViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .appColor(.babplusBackground)
+        collectionView.backgroundColor = AssetsColor.babplusBackground.getColor()
         return collectionView
     }()
     

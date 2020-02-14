@@ -24,7 +24,7 @@ class LaunchViewController: UIViewController {
     private let spoonImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "SPOON")
+        imageView.image = UIImage(named: "spoon")
         return imageView
     }()
     
@@ -36,21 +36,9 @@ class LaunchViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let APPDELEGATE = UIApplication.shared.delegate as! AppDelegate
-        super.viewDidAppear(true)
-        let mainVC = MainViewController()
-        let mapVC = BranchsAddressMapViewController()
-        let mainNaviController = UINavigationController(rootViewController: mainVC)
-        let mapNaviController = UINavigationController(rootViewController: mapVC)
-        mainNaviController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
-        mapNaviController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 1)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [mainNaviController, mapNaviController]
-        
-        RequestHelper().reqTask(path: "menu", method: "GET") {
-            (result) in
-            APPDELEGATE.dummy = result
+        RequestHelper().reqTask(path: "menu", method: "GET") { [weak self] (result) in
+        guard let _ = self else { return }
+
             let imageData: [ContentImage] = result.contents.map {
                 if let url = URL(string: $0.image ?? ""), let data = try? Data(contentsOf: url) {
                     return ContentImage(name: $0.name, imageData: data)
@@ -58,23 +46,10 @@ class LaunchViewController: UIViewController {
                 return ContentImage(name: $0.name, imageData: nil)
             }
             UserDefaultHelper().addData(contentImg: imageData)
-//            APPDELEGATE.storeImage = result.contents.map {
-//                let image: UIImage?
-//                if let url = URL(string: $0.image ?? ""), let data = try? Data(contentsOf: url) {
-//                    image = UIImage(data: data)
-//                    
-//                } else {
-//                    image = UIImage(named: "logo")
-//                }
-//                return ContentImage(name: $0.name, image: image)
-//            }
             
             DispatchQueue.main.async {
-                let tempWindow = UIWindow(frame: UIScreen.main.bounds)
-                tempWindow.rootViewController = tabBarController
-                APPDELEGATE.window = tempWindow
-                APPDELEGATE.window?.makeKeyAndVisible()
-                
+                Constants.APPDELEGATE.dummy = result
+                Constants.APPDELEGATE.changeRootViewController()
             }
         }
         
