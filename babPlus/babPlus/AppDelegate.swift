@@ -27,3 +27,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate {
+    func changeRootViewController(){
+        let mainVC = MainViewController()
+        let mapVC = BranchsAddressMapViewController()
+        
+        let mainNaviController = UINavigationController(rootViewController: mainVC)
+        let mapNaviController = UINavigationController(rootViewController: mapVC)
+        mainNaviController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
+        mapNaviController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 1)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [mainNaviController, mapNaviController]
+        
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+    }
+}
