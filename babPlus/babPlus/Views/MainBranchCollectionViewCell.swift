@@ -15,8 +15,8 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .appColor(.babplusCellBackground)
-        self.branchName.textColor = .appColor(.babplusTextColor)
+        self.backgroundColor = AssetsColor.babplusCellBackground.getColor()
+        self.branchName.textColor = AssetsColor.babplusTextColor.getColor()
         
         setupUI()
         setupConstraints()
