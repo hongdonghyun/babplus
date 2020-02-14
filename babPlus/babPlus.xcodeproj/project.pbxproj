@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7C64833423EBAD640011D1BB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64833323EBAD640011D1BB /* LaunchViewController.swift */; };
-		7C9DCA5123F4FA2E00141077 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DCA5023F4FA2E00141077 /* extensions.swift */; };
+		7C9DCA5123F4FA2E00141077 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DCA5023F4FA2E00141077 /* Extensions.swift */; };
 		7CADFB1223F54EC000C64FB5 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADFB1123F54EC000C64FB5 /* UserDefaultHelper.swift */; };
 		7CFF655423EA911600D63D86 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF655323EA911600D63D86 /* RequestHelper.swift */; };
 		7CFF655623EA916200D63D86 /* BabplusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF655523EA916200D63D86 /* BabplusModel.swift */; };
@@ -20,12 +20,12 @@
 		961C1B5A23E8567C009520A5 /* BranchsAddressMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B5923E8567C009520A5 /* BranchsAddressMapViewController.swift */; };
 		961C1B5C23E8583A009520A5 /* BranchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B5B23E8583A009520A5 /* BranchDetailViewController.swift */; };
 		961C1B5E23E98831009520A5 /* MainBranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B5D23E98831009520A5 /* MainBranchCollectionViewCell.swift */; };
-		961C1B6123EA8C3B009520A5 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B6023EA8C3B009520A5 /* constants.swift */; };
+		961C1B6123EA8C3B009520A5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B6023EA8C3B009520A5 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7C64833323EBAD640011D1BB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
-		7C9DCA5023F4FA2E00141077 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		7C9DCA5023F4FA2E00141077 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7CADFB1123F54EC000C64FB5 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
 		7CFF655323EA911600D63D86 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
 		7CFF655523EA916200D63D86 /* BabplusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BabplusModel.swift; path = babPlus/Utils/BabplusModel.swift; sourceTree = SOURCE_ROOT; };
@@ -39,7 +39,7 @@
 		961C1B5923E8567C009520A5 /* BranchsAddressMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchsAddressMapViewController.swift; sourceTree = "<group>"; };
 		961C1B5B23E8583A009520A5 /* BranchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchDetailViewController.swift; sourceTree = "<group>"; };
 		961C1B5D23E98831009520A5 /* MainBranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBranchCollectionViewCell.swift; sourceTree = "<group>"; };
-		961C1B6023EA8C3B009520A5 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		961C1B6023EA8C3B009520A5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +115,9 @@
 		961C1B5F23EA8BDC009520A5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				961C1B6023EA8C3B009520A5 /* constants.swift */,
+				961C1B6023EA8C3B009520A5 /* Constants.swift */,
 				7CFF655323EA911600D63D86 /* RequestHelper.swift */,
-				7C9DCA5023F4FA2E00141077 /* extensions.swift */,
+				7C9DCA5023F4FA2E00141077 /* Extensions.swift */,
 				7CADFB1123F54EC000C64FB5 /* UserDefaultHelper.swift */,
 			);
 			path = Utils;
@@ -198,8 +198,8 @@
 				7C64833423EBAD640011D1BB /* LaunchViewController.swift in Sources */,
 				961C1B5A23E8567C009520A5 /* BranchsAddressMapViewController.swift in Sources */,
 				961C1B4723E85379009520A5 /* MainViewController.swift in Sources */,
-				961C1B6123EA8C3B009520A5 /* constants.swift in Sources */,
-				7C9DCA5123F4FA2E00141077 /* extensions.swift in Sources */,
+				961C1B6123EA8C3B009520A5 /* Constants.swift in Sources */,
+				7C9DCA5123F4FA2E00141077 /* Extensions.swift in Sources */,
 				961C1B5E23E98831009520A5 /* MainBranchCollectionViewCell.swift in Sources */,
 				7CFF655623EA916200D63D86 /* BabplusModel.swift in Sources */,
 				7CADFB1223F54EC000C64FB5 /* UserDefaultHelper.swift in Sources */,
