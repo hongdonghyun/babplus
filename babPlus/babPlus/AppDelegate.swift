@@ -31,14 +31,18 @@ extension AppDelegate {
     func changeRootViewController(){
         let mainVC = MainViewController()
         let mapVC = BranchsAddressMapViewController()
-        
+        let settingVC = SettingViewController()
         let mainNaviController = UINavigationController(rootViewController: mainVC)
         let mapNaviController = UINavigationController(rootViewController: mapVC)
-        mainNaviController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
-        mapNaviController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 1)
+        let settingNaviController = UINavigationController(rootViewController: settingVC)
+        
+        mapNaviController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(systemName: "map.fill"), tag: 0)
+        mainNaviController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 1)
+        settingNaviController.tabBarItem = UITabBarItem(title: "설정", image: UIImage(named: "MoreIcon"), tag: 2)
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [mainNaviController, mapNaviController]
+        tabBarController.viewControllers = [mapNaviController, mainNaviController, settingNaviController]
+        tabBarController.selectedIndex = 1
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
