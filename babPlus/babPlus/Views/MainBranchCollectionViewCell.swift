@@ -11,12 +11,15 @@ import UIKit
 class MainBranchCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainBranchCell"
     private let branchImage = UIImageView()
-    private let branchName = UILabel()
+    private let branchName: UILabel = {
+        let label = UILabel()
+        label.textColor = AssetsColor.babplusTextColor.getColor()
+        return label
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = AssetsColor.babplusCellBackground.getColor()
-        self.branchName.textColor = AssetsColor.babplusTextColor.getColor()
         
         setupUI()
         setupConstraints()
@@ -43,7 +46,7 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
         branchName.textAlignment = .center
         branchName.font = UIFont.preferredFont(forTextStyle: .headline)
         
-//        branchName.textColor = .lightGray
+        //        branchName.textColor = .lightGray
     }
     
     private func setupConstraints() {
@@ -79,7 +82,7 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
             }
             
         }
-
+        
     }
     
 }
