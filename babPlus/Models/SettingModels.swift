@@ -16,6 +16,7 @@ struct Settings {
 
 struct SettingOptions {
     let settingName: String
+    let identifier: String
     let indicator: Bool
     let nextVC: UIViewController?
     let toggleBtn: Bool
@@ -33,12 +34,14 @@ enum SettingType: String, CaseIterable {
             return [
                 SettingOptions(
                     settingName: "좋아하는 음식 등록하기",
+                    identifier: "favorite",
                     indicator: true,
                     nextVC: FavoriteViewController(),
                     toggleBtn: false
                 ),
                 SettingOptions(
                     settingName: "싫어하는 음식 등록하기",
+                    identifier: "hate",
                     indicator: true,
                     nextVC: FavoriteViewController(),
                     toggleBtn: false
@@ -48,19 +51,21 @@ enum SettingType: String, CaseIterable {
             return [
                 SettingOptions(
                     settingName: "길찾기",
+                    identifier: "navigation",
                     indicator: false,
                     nextVC: nil,
                     toggleBtn: true
                 ),
                 SettingOptions(
                     settingName: "밥시간 알림",
+                    identifier: "noti",
                     indicator: false,
                     nextVC: nil,
                     toggleBtn: true
                 )
             ]
         default:
-            return [SettingOptions(settingName: "nil", indicator: false, nextVC: nil, toggleBtn: false)]
+            return [SettingOptions(settingName: "nil", identifier: "nil", indicator: false, nextVC: nil, toggleBtn: false)]
         }
     }
     
