@@ -9,20 +9,9 @@
 import Foundation
 import UIKit
 
-enum AssetsColor {
-    case babplusBackground
-    case babplusCellBackground
-    case babplusTextColor
-    
-    func getColor() -> UIColor {
-        switch self {
-        case .babplusBackground:
-            return UIColor(named: "BabplusBackground")!
-        case .babplusCellBackground:
-            return UIColor(named: "BabplusCellBackground")!
-        case .babplusTextColor:
-            return UIColor(named: "BabplusTextColor")!
-        }
+extension Bool {
+    static func ^ (left: Bool, right: Bool) -> Bool {
+        return left != right
     }
 }
 

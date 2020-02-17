@@ -16,3 +16,26 @@ struct Constants{
     static let base_url = "https://1cr8sgkm6e.execute-api.ap-northeast-2.amazonaws.com/prod/"
     static let APPDELEGATE = UIApplication.shared.delegate as! AppDelegate
 }
+
+enum AssetsColor {
+    case babplusBackground
+    case babplusCellBackground
+    case babplusTextColor
+    case babplusTableCellTextColor
+    case babplusSwitchOffColor
+    
+    func getColor() -> UIColor {
+        switch self {
+        case .babplusBackground:
+            return UIColor(named: "BabplusBackground")!
+        case .babplusCellBackground:
+            return UIColor(named: "BabplusCellBackground")!
+        case .babplusTextColor:
+            return UIColor(named: "BabplusTextColor")!
+        case .babplusTableCellTextColor:
+            return UIColor(named: "BabplusTableCellTextColor")!
+        case .babplusSwitchOffColor:
+            return UIColor(named: "BabplusSwitchOffColor")!
+        }
+    }
+}
