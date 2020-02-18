@@ -43,7 +43,9 @@ extension AppDelegate {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [mapNaviController, mainNaviController, settingNaviController]
         tabBarController.selectedIndex = 1
-        
+//        let disLikeVC = DislikeViewController()
+//        let tempMain = UINavigationController(rootViewController: disLikeVC)
+//        tabBarController.viewControllers = [tempMain]
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }

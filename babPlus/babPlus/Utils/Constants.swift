@@ -23,6 +23,7 @@ enum AssetsColor {
     case babplusTextColor
     case babplusTableCellTextColor
     case babplusSwitchOffColor
+    case babplusUnderLineColor
     
     func getColor() -> UIColor {
         switch self {
@@ -36,6 +37,8 @@ enum AssetsColor {
             return UIColor(named: "BabplusTableCellTextColor")!
         case .babplusSwitchOffColor:
             return UIColor(named: "BabplusSwitchOffColor")!
+        case .babplusUnderLineColor:
+            return UIColor(named: "BabplusUnderLineColor")!
         }
     }
 }

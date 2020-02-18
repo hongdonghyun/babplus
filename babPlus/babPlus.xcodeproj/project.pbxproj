@@ -17,6 +17,8 @@
 		7C8CA51223FB966F009659D0 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8CA51123FB966F009659D0 /* SwitchCell.swift */; };
 		7C9DCA5123F4FA2E00141077 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DCA5023F4FA2E00141077 /* Extensions.swift */; };
 		7CADFB1223F54EC000C64FB5 /* UserDefaultHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADFB1123F54EC000C64FB5 /* UserDefaultHelper.swift */; };
+		7CCBB6DD23FBE8C2003153C7 /* DislikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCBB6DC23FBE8C2003153C7 /* DislikeViewController.swift */; };
+		7CCBB6E023FBEF61003153C7 /* SettingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCBB6DF23FBEF61003153C7 /* SettingUIView.swift */; };
 		7CFF655423EA911600D63D86 /* RequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFF655323EA911600D63D86 /* RequestHelper.swift */; };
 		961C1B4323E85379009520A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B4223E85379009520A5 /* AppDelegate.swift */; };
 		961C1B4723E85379009520A5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961C1B4623E85379009520A5 /* MainViewController.swift */; };
@@ -40,6 +42,8 @@
 		7C8CA51123FB966F009659D0 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		7C9DCA5023F4FA2E00141077 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7CADFB1123F54EC000C64FB5 /* UserDefaultHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHelper.swift; sourceTree = "<group>"; };
+		7CCBB6DC23FBE8C2003153C7 /* DislikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DislikeViewController.swift; sourceTree = "<group>"; };
+		7CCBB6DF23FBEF61003153C7 /* SettingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIView.swift; sourceTree = "<group>"; };
 		7CFF655323EA911600D63D86 /* RequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHelper.swift; sourceTree = "<group>"; };
 		961C1B3F23E85379009520A5 /* babPlus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = babPlus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		961C1B4223E85379009520A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				7C38155F23F6944D0077C214 /* FavoriteViewController.swift */,
+				7CCBB6DC23FBE8C2003153C7 /* DislikeViewController.swift */,
 			);
 			path = SettingsController;
 			sourceTree = "<group>";
@@ -80,6 +85,14 @@
 				7C4055BF23FAA5C900B83E3C /* SettingModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7CCBB6DE23FBEF46003153C7 /* SettingViews */ = {
+			isa = PBXGroup;
+			children = (
+				7CCBB6DF23FBEF61003153C7 /* SettingUIView.swift */,
+			);
+			path = SettingViews;
 			sourceTree = "<group>";
 		};
 		961C1B3623E85379009520A5 = {
@@ -130,6 +143,7 @@
 		961C1B5823E855D6009520A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7CCBB6DE23FBEF46003153C7 /* SettingViews */,
 				961C1B5D23E98831009520A5 /* MainBranchCollectionViewCell.swift */,
 				7C38155C23F6903E0077C214 /* SettingTableViewCell.swift */,
 				7C8CA50F23FB9658009659D0 /* IndicatorCell.swift */,
@@ -222,6 +236,7 @@
 			files = (
 				7C4055C023FAA5C900B83E3C /* SettingModels.swift in Sources */,
 				961C1B5C23E8583A009520A5 /* BranchDetailViewController.swift in Sources */,
+				7CCBB6DD23FBE8C2003153C7 /* DislikeViewController.swift in Sources */,
 				7C64833423EBAD640011D1BB /* LaunchViewController.swift in Sources */,
 				961C1B5A23E8567C009520A5 /* BranchsAddressMapViewController.swift in Sources */,
 				7C38155D23F6903E0077C214 /* SettingTableViewCell.swift in Sources */,
@@ -235,6 +250,7 @@
 				7C38156023F6944D0077C214 /* FavoriteViewController.swift in Sources */,
 				961C1B4323E85379009520A5 /* AppDelegate.swift in Sources */,
 				7CFF655423EA911600D63D86 /* RequestHelper.swift in Sources */,
+				7CCBB6E023FBEF61003153C7 /* SettingUIView.swift in Sources */,
 				7C8CA51223FB966F009659D0 /* SwitchCell.swift in Sources */,
 				7C286EB723F6521C0048D2CE /* SettingViewController.swift in Sources */,
 			);

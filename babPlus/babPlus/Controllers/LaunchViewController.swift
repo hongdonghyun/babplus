@@ -46,13 +46,13 @@ class LaunchViewController: UIViewController {
                 return ContentImage(name: $0.name, imageData: nil)
             }
             UserDefaultHelper().addData(contentImg: imageData)
-            
+
             DispatchQueue.main.async {
                 Constants.APPDELEGATE.dummy = result
                 Constants.APPDELEGATE.changeRootViewController()
             }
         }
-        
+//        Constants.APPDELEGATE.changeRootViewController()
         UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [.repeat], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
                 self.spoonImage.transform = .init(rotationAngle: .pi / -27)
