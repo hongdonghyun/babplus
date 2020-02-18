@@ -17,9 +17,17 @@ struct Settings {
 struct SettingOptions {
     let settingName: String
     let identifier: String
+    let cellType: CellType
     let indicator: Bool
     let nextVC: UIViewController?
     let toggleBtn: Bool
+    
+}
+
+enum CellType {
+    case indicatorCell
+    case switchCell
+    case defaultCell
 }
 
 enum SettingType: String, CaseIterable {
@@ -35,6 +43,7 @@ enum SettingType: String, CaseIterable {
                 SettingOptions(
                     settingName: "좋아하는 음식 등록하기",
                     identifier: "favorite",
+                    cellType: CellType.indicatorCell,
                     indicator: true,
                     nextVC: FavoriteViewController(),
                     toggleBtn: false
@@ -42,6 +51,7 @@ enum SettingType: String, CaseIterable {
                 SettingOptions(
                     settingName: "싫어하는 음식 등록하기",
                     identifier: "hate",
+                    cellType: CellType.indicatorCell,
                     indicator: true,
                     nextVC: FavoriteViewController(),
                     toggleBtn: false
@@ -52,6 +62,7 @@ enum SettingType: String, CaseIterable {
                 SettingOptions(
                     settingName: "길찾기",
                     identifier: "navigation",
+                    cellType: CellType.switchCell,
                     indicator: false,
                     nextVC: nil,
                     toggleBtn: true
@@ -59,13 +70,23 @@ enum SettingType: String, CaseIterable {
                 SettingOptions(
                     settingName: "밥시간 알림",
                     identifier: "noti",
+                    cellType: CellType.switchCell,
                     indicator: false,
                     nextVC: nil,
                     toggleBtn: true
                 )
             ]
         default:
-            return [SettingOptions(settingName: "nil", identifier: "nil", indicator: false, nextVC: nil, toggleBtn: false)]
+            return [
+                SettingOptions(
+                    settingName: "nil",
+                    identifier: "nil",
+                    cellType: CellType.defaultCell,
+                    indicator: false,
+                    nextVC: nil,
+                    toggleBtn: false
+                )
+            ]
         }
     }
     
