@@ -53,7 +53,7 @@ enum SettingType: String, CaseIterable {
                     identifier: "hate",
                     cellType: CellType.indicatorCell,
                     indicator: true,
-                    nextVC: FavoriteViewController(),
+                    nextVC: DislikeViewController(),
                     toggleBtn: false
                 )
             ]
