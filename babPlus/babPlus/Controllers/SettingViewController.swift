@@ -36,6 +36,7 @@ extension SettingViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
         return sections[section]
     }
     
@@ -49,6 +50,18 @@ extension SettingViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let setting = settings[indexPath.section].settingOptions[indexPath.row]
+        
         return self.cellDivider.create(setting: setting)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath)
+        guard let identifier = currentCell?.reuseIdentifier, identifier == IndicatorCell.identifier else { return }
+        if let cell = currentCell as? IndicatorCell {
+            guard let nextVC = cell.nextVC else { return }
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
+        
+        
     }
 }
