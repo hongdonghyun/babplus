@@ -8,14 +8,57 @@
 
 import UIKit
 
-class CustomCell: UITableViewCell {
+class CellDivider {
+    private let tableView: UITableView
+    init(tableView: UITableView) {
+        self.tableView = tableView
+    }
     
+    func create(setting: SettingOptions) -> UITableViewCell {
+        self.register(cellType: setting.cellType)
+        guard let cell = dequeue(cellType: setting.cellType) as? SettingViewCustomCell else { return UITableViewCell() }
+        
+        switch setting.cellType {
+        case .indicatorCell:
+            guard cell is IndicatorCell else { return UITableViewCell() }
+        case .switchCell:
+            guard cell is SwitchCell else { return UITableViewCell() }
+        case .defaultCell:
+            return UITableViewCell()
+        }
+        cell.configure(settingOption: setting)
+        return cell
+    }
+    
+    func register(cellType: CellType) {
+        switch cellType {
+        case .indicatorCell:
+            self.tableView.register(IndicatorCell.self, forCellReuseIdentifier: IndicatorCell.identifier)
+        case .switchCell:
+            self.tableView.register(SwitchCell.self, forCellReuseIdentifier: SwitchCell.identifier)
+        case .defaultCell:
+            self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        }
+        
+    }
+    
+    func dequeue(cellType: CellType) -> UITableViewCell {
+        switch cellType {
+        case .indicatorCell:
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: IndicatorCell.identifier) else { return UITableViewCell() }
+            return cell
+        case .switchCell:
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: SwitchCell.identifier) else { return UITableViewCell() }
+            return cell
+        case .defaultCell:
+            return UITableViewCell()
+        }
+        
+    }
 }
 
-class SettingTableViewCell: CustomCell {
-    static let indetifier = "settingCell"
-    
-    private let titleLabel: UILabel = {
+class SettingViewCustomCell: UITableViewCell {
+    let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = AssetsColor.babplusTextColor.getColor()
         return label
@@ -27,56 +70,6 @@ class SettingTableViewCell: CustomCell {
         setupUI()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-    
-    func configure(settingOptions setting: SettingOptions) {
-        guard (setting.indicator ^ setting.toggleBtn) else { return }
-        titleLabel.text = setting.settingName
-        
-        if setting.indicator {
-            accessoryType = .disclosureIndicator
-            self.backgroundColor = AssetsColor.babplusCellBackground.getColor()
-            self.tintColor = AssetsColor.babplusTextColor.getColor()
-            self.selectionStyle = .none
-            
-        }
-        
-        if setting.toggleBtn {
-            setupSwitch(identifier: setting.identifier)
-        }
-    }
-    
-    private func setupSwitch(identifier: String) {
-        let `switch`: UISwitch = {
-            let `switch` = UISwitch()
-            `switch`.accessibilityIdentifier = identifier
-            `switch`.onTintColor = AssetsColor.babplusSwitchOffColor.getColor()
-            return `switch`
-        }()
-        
-        let safeArea = contentView.safeAreaLayoutGuide
-        
-        [`switch`].forEach {
-            contentView.addSubview($0)
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
-        NSLayoutConstraint.activate([
-            `switch`.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
-            `switch`.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            `switch`.widthAnchor.constraint(equalToConstant: 40)
-        ])
-    }
-    
-    
-    
     private func setupUI() {
         let safeArea = contentView.safeAreaLayoutGuide
         
@@ -87,7 +80,20 @@ class SettingTableViewCell: CustomCell {
         
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10)
+            titleLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 30)
         ])
     }
+    
+    func configure(settingOption setting: SettingOptions) {
+        guard (setting.indicator ^ setting.toggleBtn) else { return }
+        titleLabel.text = setting.settingName
+        self.selectionStyle = .none
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
+
+
