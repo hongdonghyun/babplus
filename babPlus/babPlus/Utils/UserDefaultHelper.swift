@@ -38,7 +38,6 @@ class UserDefaultHelper {
         guard isEmpty(key) else { return }
         guard let data = imageEncode(imageArray: contentImg) else { return }
         userDefault.set(data, forKey: key.rawValue)
-        print("success")
     }
     
     func removeData(str: String) {

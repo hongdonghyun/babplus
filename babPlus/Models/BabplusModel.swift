@@ -14,6 +14,7 @@ struct BabMenu: Decodable {
     let contents: [Content]
 }
 
+// MARK: - Content
 struct Content: Decodable {
     let name, lat, lon, tag: String
     let image: String?
@@ -23,10 +24,11 @@ struct Content: Decodable {
 }
 
 // MARK: - Menu
-struct Menus: Codable {
+struct Menus: Decodable {
     let lunch, dinner: [String]
 }
 
+// MARK: - ContentImage
 struct ContentImage: Codable {
     let name: String
     let imageData: Data?
