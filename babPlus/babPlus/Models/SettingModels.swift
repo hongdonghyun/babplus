@@ -34,7 +34,7 @@ enum SettingType: String, CaseIterable {
     case babPlus = "밥+- 설정"
     case alarm = "알림설정"
     
-    static let caseList = SettingType.allCases.map({ $0 })
+    static let caseList = SettingType.allCases.map { $0 }
     
     func getInfo() -> [SettingOptions] {
         switch self {
