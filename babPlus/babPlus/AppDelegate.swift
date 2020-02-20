@@ -41,11 +41,11 @@ extension AppDelegate {
         settingNaviController.tabBarItem = UITabBarItem(title: "설정", image: UIImage(named: "MoreIcon"), tag: 2)
         
         let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = [mapNaviController, mainNaviController, settingNaviController]
-//        tabBarController.selectedIndex = 1
-        let disLikeVC = DislikeViewController()
-        let tempMain = UINavigationController(rootViewController: disLikeVC)
-        tabBarController.viewControllers = [tempMain]
+        tabBarController.viewControllers = [mapNaviController, mainNaviController, settingNaviController]
+        tabBarController.selectedIndex = 1
+//        let disLikeVC = DislikeViewController()
+//        let tempMain = UINavigationController(rootViewController: disLikeVC)
+//        tabBarController.viewControllers = [tempMain]
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }

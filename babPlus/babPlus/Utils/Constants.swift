@@ -19,6 +19,8 @@ struct Constants {
 
 struct ConstantsMessage {
     static let characterofLess = "음식이름은\n 10자이하로 입력해주세요."
+    static let userDefaultOver = "최대 10개까지\n저장가능합니다."
+    static let aleradyInItem = "이미 저장한 음식이에요."
 }
 
 

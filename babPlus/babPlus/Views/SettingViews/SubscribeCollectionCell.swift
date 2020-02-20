@@ -12,15 +12,16 @@ class SubscribeCollectionCell: UICollectionViewCell {
     static let identifier = "SubscribeCell"
     
     private let subscribeNameLabel: UILabel = {
-        let label = babplusLabel()
+        let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.textColor = .white
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .red
+        self.backgroundColor = .gray
         
         setupUI()
         

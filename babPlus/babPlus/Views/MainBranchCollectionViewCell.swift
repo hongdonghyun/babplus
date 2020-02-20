@@ -73,7 +73,7 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(branchName name: String) {
-        guard let cacheData = UserDefaultHelper().getImage() else { return }
+        guard let cacheData = UserDefaultHelper(key: .imageKey).getImage() else { return }
         if let i = cacheData.first(where: { $0.name == name }) {
             branchName.text = i.name
             if i.imageData == nil {

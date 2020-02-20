@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C23ABEF23FE7BCC00B467B3 /* UserDefaultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C23ABEE23FE7BCC00B467B3 /* UserDefaultModels.swift */; };
 		7C286EB723F6521C0048D2CE /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C286EB623F6521C0048D2CE /* SettingViewController.swift */; };
 		7C38155D23F6903E0077C214 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38155C23F6903E0077C214 /* SettingTableViewCell.swift */; };
 		7C38156023F6944D0077C214 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38155F23F6944D0077C214 /* FavoriteViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7C23ABEE23FE7BCC00B467B3 /* UserDefaultModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultModels.swift; sourceTree = "<group>"; };
 		7C286EB623F6521C0048D2CE /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7C38155C23F6903E0077C214 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		7C38155F23F6944D0077C214 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				7C4055BD23FAA5A900B83E3C /* BabplusModel.swift */,
 				7C4055BF23FAA5C900B83E3C /* SettingModels.swift */,
+				7C23ABEE23FE7BCC00B467B3 /* UserDefaultModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -132,8 +135,8 @@
 		961C1B4123E85379009520A5 /* babPlus */ = {
 			isa = PBXGroup;
 			children = (
-				7C4055BC23FAA59600B83E3C /* Models */,
 				961C1B4223E85379009520A5 /* AppDelegate.swift */,
+				7C4055BC23FAA59600B83E3C /* Models */,
 				961C1B5F23EA8BDC009520A5 /* Utils */,
 				961C1B5823E855D6009520A5 /* Views */,
 				961C1B5723E855C5009520A5 /* Controllers */,
@@ -272,6 +275,7 @@
 				7C8CA51023FB9658009659D0 /* IndicatorCell.swift in Sources */,
 				7C38156023F6944D0077C214 /* FavoriteViewController.swift in Sources */,
 				961C1B4323E85379009520A5 /* AppDelegate.swift in Sources */,
+				7C23ABEF23FE7BCC00B467B3 /* UserDefaultModels.swift in Sources */,
 				7CFF655423EA911600D63D86 /* RequestHelper.swift in Sources */,
 				7CCBB6E023FBEF61003153C7 /* SettingUIView.swift in Sources */,
 				7C8CA51223FB966F009659D0 /* SwitchCell.swift in Sources */,

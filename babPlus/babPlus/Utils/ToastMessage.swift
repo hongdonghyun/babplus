@@ -24,9 +24,9 @@ class Hong3Toast: UILabel {
         self.sizeToFit()
     }
     
-    public func show(_ controller: UIViewController, second: Double = 5.0) {
+    public func show(_ controller: UIViewController, second: Double = 2.0, keyboardHeight: CGFloat) {
         let showOriginX = controller.view.frame.midX - (self.frame.width / 2)
-        let showOriginY = controller.view.frame.maxY - (self.frame.height) - (controller.tabBarController?.tabBar.frame.height ?? 0) - 10
+        let showOriginY = controller.view.frame.maxY - (self.frame.height) - (controller.tabBarController?.tabBar.frame.height ?? 0) - keyboardHeight - 10
         frame.origin = CGPoint(x: showOriginX, y: showOriginY)
         
         controller.view.addSubview(self)
@@ -55,7 +55,7 @@ class Hong3Toast: UILabel {
             }
             HQueue.removeAll()
             isShow = false
-            show(controller, second: second)
+            show(controller, second: second, keyboardHeight: keyboardHeight)
         }
     }
     

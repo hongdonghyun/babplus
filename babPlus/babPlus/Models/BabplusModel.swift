@@ -27,9 +27,3 @@ struct Content: Decodable {
 struct Menus: Decodable {
     let lunch, dinner: [String]
 }
-
-// MARK: - ContentImage
-struct ContentImage: Codable {
-    let name: String
-    let imageData: Data?
-}

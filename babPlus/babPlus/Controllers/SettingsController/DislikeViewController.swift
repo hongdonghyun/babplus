@@ -11,6 +11,8 @@ import UIKit
 class DislikeViewController: SubscribeViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        super.likeKey = keyEnums.dislike
         menuTextField.placeholder = "싫어하는 음식을 입력하세요."
     }
+
 }
