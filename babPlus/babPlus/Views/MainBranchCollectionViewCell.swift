@@ -12,8 +12,9 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainBranchCell"
     private let branchImage = UIImageView()
     private let branchName: UILabel = {
-        let label = UILabel()
-        label.textColor = AssetsColor.babplusTextColor.getColor()
+        let label = babplusLabel()
+        label.textAlignment = .center
+        label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
@@ -43,8 +44,8 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
         branchImage.layer.masksToBounds = true
         branchImage.contentMode = .scaleAspectFill
         
-        branchName.textAlignment = .center
-        branchName.font = UIFont.preferredFont(forTextStyle: .headline)
+//        branchName.textAlignment = .center
+//        branchName.font = UIFont.preferredFont(forTextStyle: .headline)
         
         //        branchName.textColor = .lightGray
     }

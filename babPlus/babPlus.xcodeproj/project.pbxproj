@@ -12,7 +12,11 @@
 		7C38156023F6944D0077C214 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C38155F23F6944D0077C214 /* FavoriteViewController.swift */; };
 		7C4055BE23FAA5A900B83E3C /* BabplusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4055BD23FAA5A900B83E3C /* BabplusModel.swift */; };
 		7C4055C023FAA5C900B83E3C /* SettingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4055BF23FAA5C900B83E3C /* SettingModels.swift */; };
+		7C529C0923FCE8DF00074837 /* SettingUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C529C0823FCE8DF00074837 /* SettingUIViewController.swift */; };
 		7C64833423EBAD640011D1BB /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64833323EBAD640011D1BB /* LaunchViewController.swift */; };
+		7C862A6A23FCFBBE00C7C82F /* SubscribeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C862A6923FCFBBE00C7C82F /* SubscribeCollectionCell.swift */; };
+		7C862A6D23FCFDE300C7C82F /* babplusLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C862A6C23FCFDE300C7C82F /* babplusLabel.swift */; };
+		7C862A6F23FD362400C7C82F /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C862A6E23FD362400C7C82F /* ToastMessage.swift */; };
 		7C8CA51023FB9658009659D0 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8CA50F23FB9658009659D0 /* IndicatorCell.swift */; };
 		7C8CA51223FB966F009659D0 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8CA51123FB966F009659D0 /* SwitchCell.swift */; };
 		7C9DCA5123F4FA2E00141077 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9DCA5023F4FA2E00141077 /* Extensions.swift */; };
@@ -37,7 +41,11 @@
 		7C38155F23F6944D0077C214 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		7C4055BD23FAA5A900B83E3C /* BabplusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BabplusModel.swift; sourceTree = "<group>"; };
 		7C4055BF23FAA5C900B83E3C /* SettingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModels.swift; sourceTree = "<group>"; };
+		7C529C0823FCE8DF00074837 /* SettingUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUIViewController.swift; sourceTree = "<group>"; };
 		7C64833323EBAD640011D1BB /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		7C862A6923FCFBBE00C7C82F /* SubscribeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeCollectionCell.swift; sourceTree = "<group>"; };
+		7C862A6C23FCFDE300C7C82F /* babplusLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = babplusLabel.swift; sourceTree = "<group>"; };
+		7C862A6E23FD362400C7C82F /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		7C8CA50F23FB9658009659D0 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 		7C8CA51123FB966F009659D0 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		7C9DCA5023F4FA2E00141077 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -72,6 +80,7 @@
 		7C38155E23F694390077C214 /* SettingsController */ = {
 			isa = PBXGroup;
 			children = (
+				7C529C0823FCE8DF00074837 /* SettingUIViewController.swift */,
 				7C38155F23F6944D0077C214 /* FavoriteViewController.swift */,
 				7CCBB6DC23FBE8C2003153C7 /* DislikeViewController.swift */,
 			);
@@ -87,10 +96,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		7C862A6B23FCFDB600C7C82F /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				7C862A6C23FCFDE300C7C82F /* babplusLabel.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
 		7CCBB6DE23FBEF46003153C7 /* SettingViews */ = {
 			isa = PBXGroup;
 			children = (
 				7CCBB6DF23FBEF61003153C7 /* SettingUIView.swift */,
+				7C862A6923FCFBBE00C7C82F /* SubscribeCollectionCell.swift */,
 			);
 			path = SettingViews;
 			sourceTree = "<group>";
@@ -98,7 +116,6 @@
 		961C1B3623E85379009520A5 = {
 			isa = PBXGroup;
 			children = (
-				7C4055BC23FAA59600B83E3C /* Models */,
 				961C1B4123E85379009520A5 /* babPlus */,
 				961C1B4023E85379009520A5 /* Products */,
 			);
@@ -115,6 +132,7 @@
 		961C1B4123E85379009520A5 /* babPlus */ = {
 			isa = PBXGroup;
 			children = (
+				7C4055BC23FAA59600B83E3C /* Models */,
 				961C1B4223E85379009520A5 /* AppDelegate.swift */,
 				961C1B5F23EA8BDC009520A5 /* Utils */,
 				961C1B5823E855D6009520A5 /* Views */,
@@ -143,6 +161,7 @@
 		961C1B5823E855D6009520A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7C862A6B23FCFDB600C7C82F /* CustomUI */,
 				7CCBB6DE23FBEF46003153C7 /* SettingViews */,
 				961C1B5D23E98831009520A5 /* MainBranchCollectionViewCell.swift */,
 				7C38155C23F6903E0077C214 /* SettingTableViewCell.swift */,
@@ -159,6 +178,7 @@
 				7CFF655323EA911600D63D86 /* RequestHelper.swift */,
 				7C9DCA5023F4FA2E00141077 /* Extensions.swift */,
 				7CADFB1123F54EC000C64FB5 /* UserDefaultHelper.swift */,
+				7C862A6E23FD362400C7C82F /* ToastMessage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -236,15 +256,18 @@
 			files = (
 				7C4055C023FAA5C900B83E3C /* SettingModels.swift in Sources */,
 				961C1B5C23E8583A009520A5 /* BranchDetailViewController.swift in Sources */,
+				7C862A6D23FCFDE300C7C82F /* babplusLabel.swift in Sources */,
 				7CCBB6DD23FBE8C2003153C7 /* DislikeViewController.swift in Sources */,
 				7C64833423EBAD640011D1BB /* LaunchViewController.swift in Sources */,
 				961C1B5A23E8567C009520A5 /* BranchsAddressMapViewController.swift in Sources */,
 				7C38155D23F6903E0077C214 /* SettingTableViewCell.swift in Sources */,
 				961C1B4723E85379009520A5 /* MainViewController.swift in Sources */,
+				7C862A6A23FCFBBE00C7C82F /* SubscribeCollectionCell.swift in Sources */,
 				961C1B6123EA8C3B009520A5 /* Constants.swift in Sources */,
 				7C4055BE23FAA5A900B83E3C /* BabplusModel.swift in Sources */,
 				7C9DCA5123F4FA2E00141077 /* Extensions.swift in Sources */,
 				961C1B5E23E98831009520A5 /* MainBranchCollectionViewCell.swift in Sources */,
+				7C862A6F23FD362400C7C82F /* ToastMessage.swift in Sources */,
 				7CADFB1223F54EC000C64FB5 /* UserDefaultHelper.swift in Sources */,
 				7C8CA51023FB9658009659D0 /* IndicatorCell.swift in Sources */,
 				7C38156023F6944D0077C214 /* FavoriteViewController.swift in Sources */,
@@ -253,6 +276,7 @@
 				7CCBB6E023FBEF61003153C7 /* SettingUIView.swift in Sources */,
 				7C8CA51223FB966F009659D0 /* SwitchCell.swift in Sources */,
 				7C286EB723F6521C0048D2CE /* SettingViewController.swift in Sources */,
+				7C529C0923FCE8DF00074837 /* SettingUIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

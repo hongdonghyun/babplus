@@ -9,13 +9,18 @@
 import Foundation
 import MapKit
 
-struct Constants{
+struct Constants {
     static let mapCenterlat = 37.544792611423425//위도
     static let mapCenterlon = 127.05570731194194//경도
     static let span = MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)
     static let base_url = "https://1cr8sgkm6e.execute-api.ap-northeast-2.amazonaws.com/prod/"
     static let APPDELEGATE = UIApplication.shared.delegate as! AppDelegate
 }
+
+struct ConstantsMessage {
+    static let characterofLess = "음식이름은\n 10자이하로 입력해주세요."
+}
+
 
 enum AssetsColor {
     case babplusBackground

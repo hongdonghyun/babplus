@@ -14,4 +14,3 @@ extension Bool {
         return left != right
     }
 }
-

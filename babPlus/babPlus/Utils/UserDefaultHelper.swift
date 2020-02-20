@@ -8,16 +8,17 @@
 
 import Foundation
 
+enum keyEnums: String {
+    case favoriteStr
+    case dislike
+    case imageKey
+}
+
 class UserDefaultHelper {
     private let userDefault = UserDefaults.standard
     private let encoder = PropertyListEncoder()
     private let decoder = PropertyListDecoder()
 
-    enum keyEnums: String {
-        case favoriteStr
-        case imageKey
-    }
-    
     func removeAll() {
         for key in self.userDefault.dictionaryRepresentation().keys {
             self.userDefault.removeObject(forKey: key.description)
