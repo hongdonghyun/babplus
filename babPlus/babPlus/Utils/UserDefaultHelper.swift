@@ -70,16 +70,10 @@ class UserDefaultHelper {
     func removeData(str: String) {
         guard var userData = getSubscribe() else { return }
         if let index = userData.firstIndex(where: { (element) in
-            element.name == str
-        }) {
-            userData.remove(at: index)
-        }
+            element.name == str }) { userData.remove(at: index) }
+        
         guard let encodeUserData = subscribeEncode(subscribeArr: userData) else { return }
         userDefault.set(encodeUserData, forKey: self.key.rawValue)
-        
-    }
-    
-    func removeData(contentImg: Data) {
         
     }
     

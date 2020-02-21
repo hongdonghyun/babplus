@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private var branchList = [String]()
+    private var isWillAppear = false
     
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -40,7 +41,13 @@ class MainViewController: UIViewController {
         loadData()
         searchBarSet()
         setupCollectionView()
-        
+        collectionView.isPrefetchingEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view Will appear")
+        isWillAppear = true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -49,11 +56,8 @@ class MainViewController: UIViewController {
         navigationItem.searchController?.isActive = false
     }
     
-    
     private func loadData() {
-        Constants.APPDELEGATE.dummy?.contents.forEach {
-            branchList.append($0.name)
-        }
+        Constants.APPDELEGATE.dummy?.contents.forEach { branchList.append($0.name) }
     }
     
     // MARK: - collectionView 초기화
@@ -99,6 +103,34 @@ extension MainViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let subscribeArray = UserDefaultHelper(key: .favoriteStr).getSubscribe()
+        let dislikeArray = UserDefaultHelper(key: .dislike).getSubscribe()
+        guard isWillAppear else { return }
+        guard let cell = cell as? MainBranchCollectionViewCell else { return }
+        guard let likes = subscribeArray else { return }
+        guard let dislikes = dislikeArray else { return }
+        var key = highlightSwitch.nothing
+
+        Constants.APPDELEGATE.dummy?.contents.forEach { element in
+            if element.name == cell.branchName.text {
+                likes.forEach { like in
+                    if (element.menus.lunch.first(where: { $0.contains(like.name) }) != nil) { key = .babPlus }
+                    dislikes.forEach { dislike in
+                        if (element.menus.dinner.first(where: { $0.contains(dislike.name) }) != nil) {
+                            if key == .babPlus { key = .babPlusMinus } else { key = .babMinus }
+                        }
+                    }
+                }
+            }
+        }
+        DispatchQueue.main.async {
+            cell.updateLabel(key: key)
+        }
+//        collectionView.reloadItems(at: [indexPath])
+        
+    }
+    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -106,10 +138,9 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         guard branchList.count > indexPath.item,
-        let receiveAddress = Constants.APPDELEGATE.dummy?.contents[indexPath.item].address else { return }
+            let receiveAddress = Constants.APPDELEGATE.dummy?.contents[indexPath.item].address else { return }
         
         let branchDetailVC = BranchDetailViewController()
-        
         branchDetailVC.receiveBranchName = branchList[indexPath.item]
         branchDetailVC.receiveAddress = receiveAddress
         self.navigationController?.pushViewController(branchDetailVC, animated: true)
@@ -130,13 +161,12 @@ extension MainViewController: UISearchBarDelegate {
                     (element.menus.dinner.first(where: { $0.contains(searchText) }) != nil) {
                     branchList.append(element.name)
                 }
-
+                
             }
             
         }
         collectionView.reloadData()
-        }
-    
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         collectionViewInitialization()

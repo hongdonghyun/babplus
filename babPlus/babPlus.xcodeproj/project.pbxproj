@@ -104,6 +104,7 @@
 		7C862A6B23FCFDB600C7C82F /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				961C1B5D23E98831009520A5 /* MainBranchCollectionViewCell.swift */,
 				7C8CA50F23FB9658009659D0 /* IndicatorCell.swift */,
 				7C8CA51123FB966F009659D0 /* SwitchCell.swift */,
 				7C862A6C23FCFDE300C7C82F /* BabplusLabel.swift */,
@@ -172,7 +173,6 @@
 			children = (
 				7C862A6B23FCFDB600C7C82F /* CustomUI */,
 				7CCBB6DE23FBEF46003153C7 /* SettingViews */,
-				961C1B5D23E98831009520A5 /* MainBranchCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

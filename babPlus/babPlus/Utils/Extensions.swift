@@ -6,11 +6,16 @@
 //  Copyright © 2020 YoujinMac. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 //MARK: - XOR
 extension Bool {
     static func ^ (left: Bool, right: Bool) -> Bool {
         return left != right
     }
+}
+
+func textWidth(text: String, font: UIFont?) -> CGSize {
+    let attributes = font != nil ? [NSAttributedString.Key.font: font] : [:]
+    return text.size(withAttributes: attributes)
 }

@@ -13,8 +13,7 @@ class SubscribeCollectionCell: UICollectionViewCell {
     
     private let subscribeNameLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .white
         return label
     }()
@@ -22,13 +21,17 @@ class SubscribeCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .gray
-        
+        self.layer.cornerRadius = 5
         setupUI()
         
     }
     
     func configure(subscribeName name: String) {
-        subscribeNameLabel.text = name
+        let currentFont = self.subscribeNameLabel.font!
+        let text = " " + name + " "
+        subscribeNameLabel.text = text
+        self.frame.size = (text as NSString).size(withAttributes: [NSAttributedString.Key.font : currentFont])
+
     }
     
     private func setupUI() {

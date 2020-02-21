@@ -8,21 +8,43 @@
 
 import UIKit
 
+enum highlightSwitch: String {
+    case babPlus      = "      밥 +        "
+    case babMinus     = "      밥 -        "
+    case babPlusMinus = "       밥 +-        "
+    case nothing
+}
+
 class MainBranchCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainBranchCell"
     private let branchImage = UIImageView()
-    private let branchName: UILabel = {
+    
+    let branchName: UILabel = {
         let label = BabplusLabel()
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
     }()
     
+    var highlightLabel: UILabel = {
+        let label = UILabel()
+        label.transform = .init(rotationAngle: .pi / 4)
+        label.isHidden = true
+        return label
+    }()
+    
+    var cellWidth: CGFloat = 0
+    var cellHeight: CGFloat = 0
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = AssetsColor.babplusCellBackground.getColor()
+        cellWidth = self.bounds.width
+        cellHeight = self.bounds.height
         setupUI()
         setupConstraints()
+        self.clipsToBounds = true
     }
     
     required init?(coder: NSCoder) {
@@ -43,10 +65,6 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
         branchImage.layer.masksToBounds = true
         branchImage.contentMode = .scaleAspectFill
         
-//        branchName.textAlignment = .center
-//        branchName.font = UIFont.preferredFont(forTextStyle: .headline)
-        
-        //        branchName.textColor = .lightGray
     }
     
     private func setupConstraints() {
@@ -56,19 +74,45 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
             contentView.addSubview($0)
         }
         
+        
         NSLayoutConstraint.activate([
             branchImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            branchImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -labelHeight),
             branchImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             branchImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            branchImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -labelHeight),
             
             branchName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             branchName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             branchName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            branchName.heightAnchor.constraint(equalToConstant: labelHeight)
-            
+            branchName.heightAnchor.constraint(equalToConstant: labelHeight),
         ])
         
+    }
+    
+    func updateLabel(key: highlightSwitch) {
+        switch key {
+        case .nothing:
+            self.highlightLabel.isHidden = true
+            highlightLabel.removeFromSuperview()
+        default:
+            self.highlightLabel.isHidden = false
+            self.highlightLabel.text = key.rawValue
+            self.highlightLabel.backgroundColor = .blue
+            self.highlightLabel.textColor = .white
+            contentView.addSubview(highlightLabel)
+            highlightLabel.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                highlightLabel.leadingAnchor.constraint(
+                    equalTo: contentView.centerXAnchor,
+                    constant: (cellWidth * 0.11)
+                ),
+                highlightLabel.bottomAnchor.constraint(
+                    equalTo: contentView.centerYAnchor,
+                    constant: -(cellHeight * 0.31)
+                )
+            ])
+        }
     }
     
     func configure(branchName name: String) {
@@ -80,7 +124,6 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
             } else {
                 branchImage.image = UIImage(data: i.imageData!)
             }
-            
         }
         
     }

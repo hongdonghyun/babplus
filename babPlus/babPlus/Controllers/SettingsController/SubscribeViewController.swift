@@ -62,7 +62,7 @@ class SubscribeViewController: UIViewController {
 extension SubscribeViewController: UICollectionViewDelegateFlowLayout {
     // 상하좌우
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
     }
     // 위아래
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -116,7 +116,10 @@ extension SubscribeViewController: UITextFieldDelegate {
             return false
         }
         userDefault.addData(string: text)
-        collectionView.reloadData()
+        
+        self.collectionView.reloadData()
+        
+        
         textField.text = ""
         return true
     }
@@ -138,7 +141,6 @@ extension SubscribeViewController {
 
 // MARK: UI
 extension SubscribeViewController {
-    
     private func setupCollectionView() {
         collectionView.register(SubscribeCollectionCell.self, forCellWithReuseIdentifier: SubscribeCollectionCell.identifier)
         collectionView.dataSource = self
@@ -147,7 +149,6 @@ extension SubscribeViewController {
     
     private func setupUI() {
         let safeArea = view.safeAreaLayoutGuide
-        
         [contentView, menuTextField, underLine, collectionView].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
