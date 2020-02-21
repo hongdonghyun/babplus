@@ -8,7 +8,7 @@
 
 import UIKit
 
-class babplusLabel: UILabel {
+class BabplusLabel: UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupStyle()

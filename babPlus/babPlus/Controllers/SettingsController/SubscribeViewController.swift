@@ -8,27 +8,7 @@
 
 import UIKit
 
-class MyCollectionView: UICollectionView {
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        guard let hitView = super.hitTest(point, with: event) else { return nil }
-        if hitView == self {
-            return nil
-        } else {
-            return hitView
-        }
-    }
-}
-
 class SubscribeViewController: UIViewController {
-    var likeKey: keyEnums!
-    
-    private lazy var userDefault = UserDefaultHelper(key: likeKey)
-    private var keyboardHeight: CGFloat = 0
-    private var userSubscribeArray: [String] {
-        guard let array = userDefault.getSubscribe() else { return [""] }
-        return array.map { $0.name }
-    }
-    
     lazy var menuTextField: UITextField = {
         let textField = UITextField()
         textField.font = .systemFont(ofSize: 25, weight: .medium)
@@ -42,14 +22,22 @@ class SubscribeViewController: UIViewController {
         return view
     }()
     
-    private let contentView = UIView()
-    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let collectionView = MyCollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = SubscribeCollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = AssetsColor.babplusBackground.getColor()
         return collectionView
     }()
+    
+    private let contentView = UIView()
+    
+    public var likeKey: keyEnums!
+    private var keyboardHeight: CGFloat = 0
+    lazy var userDefault = UserDefaultHelper(key: likeKey)
+    private var userSubscribeArray: [String] {
+        guard let array = userDefault.getSubscribe() else { return [""] }
+        return array.map { $0.name }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +111,7 @@ extension SubscribeViewController: UITextFieldDelegate {
             Hong3Toast(ConstantsMessage.aleradyInItem).show(self, keyboardHeight: keyboardHeight)
             return false
         }
-        guard userDefault.subscribeCnt() <= 10 else {
+        guard userDefault.subscribeCnt() < 10 else {
             Hong3Toast(ConstantsMessage.userDefaultOver).show(self, keyboardHeight: keyboardHeight)
             return false
         }

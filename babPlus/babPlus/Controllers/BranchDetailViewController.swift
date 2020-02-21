@@ -25,6 +25,7 @@ class BranchDetailViewController: UIViewController {
         tableView.separatorStyle = .none
         return tableView
     }()
+    
     private lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.APPDELEGATE.dummy?.date
@@ -32,7 +33,7 @@ class BranchDetailViewController: UIViewController {
         label.textColor = .darkGray
         return label
     }()
-
+    
     private lazy var menuArray = Constants.APPDELEGATE.dummy?.contents.first(where: { $0.name == self.receiveBranchName })
     
     public var receiveAddress = ""
@@ -43,10 +44,6 @@ class BranchDetailViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = receiveBranchName
         setupUI()
-    }
-    
-    @objc private func didTapBackButtonItem(_ sender : Any) {
-        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -12,7 +12,7 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainBranchCell"
     private let branchImage = UIImageView()
     private let branchName: UILabel = {
-        let label = babplusLabel()
+        let label = BabplusLabel()
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .headline)
         return label
@@ -21,7 +21,6 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = AssetsColor.babplusCellBackground.getColor()
-        
         setupUI()
         setupConstraints()
     }

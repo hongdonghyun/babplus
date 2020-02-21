@@ -10,20 +10,17 @@ import UIKit
 
 class LaunchViewController: UIViewController {
     private let logoImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        let imageView = BabplusImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         imageView.image = UIImage(named: "logo")
         return imageView
     }()
     private let forkImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        let imageView = BabplusImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         imageView.image = UIImage(named: "fork")
         return imageView
     }()
     private let spoonImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        let imageView = BabplusImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         imageView.image = UIImage(named: "spoon")
         return imageView
     }()
@@ -79,7 +76,7 @@ class LaunchViewController: UIViewController {
     private func setupUI() {
         let logoSize:CGFloat = view.frame.width / 2
         let margin:CGFloat = 50
-        let dishiesWidht:CGFloat = 120
+        let iconWidth:CGFloat = 120
         
         [logoImage, forkImage, spoonImage].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -94,11 +91,11 @@ class LaunchViewController: UIViewController {
             
             forkImage.centerYAnchor.constraint(equalTo: logoImage.bottomAnchor),
             forkImage.leadingAnchor.constraint(equalTo: logoImage.trailingAnchor, constant: -margin),
-            forkImage.widthAnchor.constraint(equalToConstant: dishiesWidht),
+            forkImage.widthAnchor.constraint(equalToConstant: iconWidth),
             
             spoonImage.centerYAnchor.constraint(equalTo: logoImage.bottomAnchor),
             spoonImage.trailingAnchor.constraint(equalTo: logoImage.leadingAnchor, constant: margin),
-            spoonImage.widthAnchor.constraint(equalToConstant: dishiesWidht),
+            spoonImage.widthAnchor.constraint(equalToConstant: iconWidth),
             
         ])
     }

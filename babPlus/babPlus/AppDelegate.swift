@@ -10,7 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
     var window: UIWindow?
     var dummy: BabMenu?
     var storeImage = [ContentImage]()
@@ -19,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let launchScreen = LaunchViewController()
-        print("appdelegate")
         window?.rootViewController = launchScreen
         window?.makeKeyAndVisible()
         return true
@@ -43,9 +41,6 @@ extension AppDelegate {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [mapNaviController, mainNaviController, settingNaviController]
         tabBarController.selectedIndex = 1
-//        let disLikeVC = DislikeViewController()
-//        let tempMain = UINavigationController(rootViewController: disLikeVC)
-//        tabBarController.viewControllers = [tempMain]
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
     }

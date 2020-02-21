@@ -20,11 +20,13 @@ class BranchsAddressMapViewController: UIViewController {
         mapView.setRegion(region, animated: true)
         return mapView
     }()
+    
     private lazy var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.delegate = self
         return locationManager
     }()
+    
     private var contents: BabMenu?
     private var pinNameList = [String]()
     private var pinAddressList = [String]()
@@ -90,9 +92,7 @@ class BranchsAddressMapViewController: UIViewController {
     private func geocodeAddressString(address addressString: String, title titleString: String) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(addressString) { (placeMark, error) in
-            if error != nil {
-                return print(error!.localizedDescription)
-            }
+            if error != nil { return print(error!.localizedDescription) }
             guard let place = placeMark?.first else { return }
             let coordinate = place.location?.coordinate
             self.setPin(title: titleString, coordinate: coordinate!)

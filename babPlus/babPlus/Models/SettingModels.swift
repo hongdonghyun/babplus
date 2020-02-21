@@ -6,7 +6,6 @@
 //  Copyright © 2020 YoujinMac. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Settings {
@@ -74,17 +73,6 @@ enum SettingType: String, CaseIterable {
                     indicator: false,
                     nextVC: nil,
                     toggleBtn: true
-                )
-            ]
-        default:
-            return [
-                SettingOptions(
-                    settingName: "nil",
-                    identifier: "nil",
-                    cellType: CellType.defaultCell,
-                    indicator: false,
-                    nextVC: nil,
-                    toggleBtn: false
                 )
             ]
         }

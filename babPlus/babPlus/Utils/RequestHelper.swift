@@ -14,7 +14,7 @@ struct RequestHelper {
         guard let url = URL(string: Constants.base_url + path) else { return nil }
         var request = URLRequest(url: url)
         request.httpMethod = method
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")    //json형식으로
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }
 
@@ -22,7 +22,7 @@ struct RequestHelper {
         let task = URLSession.shared.dataTask(with: RequestHelper().request(urlPath: path, method: method)!) {
             data, response, error in
             if let res = response as? HTTPURLResponse {
-                if res.statusCode == 200 {
+                if (200...300).contains(res.statusCode) {
                     if let data = data, let body = try? JSONDecoder().decode(BabMenu.self, from: data) {
                         completion(body)
                     } else {

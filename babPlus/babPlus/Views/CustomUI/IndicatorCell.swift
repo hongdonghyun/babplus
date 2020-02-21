@@ -6,7 +6,6 @@
 //  Copyright © 2020 YoujinMac. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 final class IndicatorCell: SettingViewCustomCell {

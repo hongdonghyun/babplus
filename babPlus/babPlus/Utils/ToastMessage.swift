@@ -6,7 +6,6 @@
 //  Copyright © 2020 YoujinMac. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 fileprivate var isShow: Bool = false
@@ -23,10 +22,10 @@ class Hong3Toast: UILabel {
         self.numberOfLines = 0
         self.sizeToFit()
     }
-    
+
     public func show(_ controller: UIViewController, second: Double = 2.0, keyboardHeight: CGFloat) {
         let showOriginX = controller.view.frame.midX - (self.frame.width / 2)
-        let showOriginY = controller.view.frame.maxY - (self.frame.height) - (controller.tabBarController?.tabBar.frame.height ?? 0) - keyboardHeight - 10
+        let showOriginY = controller.view.frame.maxY - (self.frame.height) - keyboardHeight - 10
         frame.origin = CGPoint(x: showOriginX, y: showOriginY)
         
         controller.view.addSubview(self)
@@ -38,13 +37,11 @@ class Hong3Toast: UILabel {
                 withDuration: second,
                 delay: 0.0,
                 options: .curveEaseOut,
-                animations: ({
-                    self.alpha = 0
-                }),
-                completion: ({ [weak self] isCompleted in
+                animations: { self.alpha = 0 },
+                completion: { [weak self] _ in
                     isShow = false
                     self?.removeFromSuperview()
-                })
+                }
             )
             
         } else {
@@ -63,35 +60,3 @@ class Hong3Toast: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-func hong3Toast(controller: UIViewController, message: String, second: Double) {
-    let toastLabel: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        label.text = " " + message + " "
-        label.textColor = .white
-        label.layer.cornerRadius = 20
-        label.sizeToFit()
-        return label
-    }()
-    
-    let showOriginX = controller.view.frame.midX - (toastLabel.frame.width / 2)
-    let showOriginY = controller.view.frame.maxY - (toastLabel.frame.height) - 10 - (controller.tabBarController?.tabBar.frame.height ?? 0)
-    
-    toastLabel.frame.origin = CGPoint(x: showOriginX, y: showOriginY)
-    controller.view.addSubview(toastLabel)
-    
-    UIView.animate(
-        withDuration: second,
-        delay: 0.1,
-        options: .curveEaseOut,
-        animations: ({
-            toastLabel.alpha = 0
-        }),
-        completion: ({ (isCompleted) in
-            toastLabel.removeFromSuperview()
-        })
-    )
-    
-}
-

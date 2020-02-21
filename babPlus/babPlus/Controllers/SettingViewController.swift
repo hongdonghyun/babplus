@@ -15,6 +15,7 @@ class SettingViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         settings = SettingType.caseList.map {
             Settings(key: $0.rawValue, settingOptions: $0.getInfo())
         }
@@ -24,20 +25,22 @@ class SettingViewController: UITableViewController {
         navigationItem.title = "설정"
     }
     
+    private func setupTableView() {
+        tableView.separatorStyle = .none
+    }
 }
 
 extension SettingViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        sections.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settings.count
+        settings.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return sections[section]
+        sections[section]
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -50,7 +53,6 @@ extension SettingViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let setting = settings[indexPath.section].settingOptions[indexPath.row]
-        
         return self.cellDivider.create(setting: setting)
     }
     
