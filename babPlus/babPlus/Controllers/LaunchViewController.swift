@@ -33,9 +33,10 @@ class LaunchViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("ViewDidAppear")
         RequestHelper().reqTask(path: "menu", method: "GET") { [weak self] (result) in
         guard let _ = self else { return }
-
+            print("request start")
             let imageData: [ContentImage] = result.contents.map {
                 if let url = URL(string: $0.image ?? ""), let data = try? Data(contentsOf: url) {
                     return ContentImage(name: $0.name, imageData: data)
@@ -49,29 +50,39 @@ class LaunchViewController: UIViewController {
                 Constants.APPDELEGATE.changeRootViewController()
             }
         }
+        print("request end")
         UIView.animateKeyframes(withDuration: 1.0, delay: 0.0, options: [.repeat], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
                 self.spoonImage.transform = .init(rotationAngle: .pi / -27)
                 self.forkImage.transform = .init(rotationAngle: .pi / 27)
             }
-            
+
             UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.5) {
                 self.spoonImage.transform = .init(rotationAngle: .pi / -18)
                 self.forkImage.transform = .init(rotationAngle: .pi / 18)
             }
-            
+
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.75) {
                 self.spoonImage.transform = .init(rotationAngle: .pi / -27)
                 self.forkImage.transform = .init(rotationAngle: .pi / 27)
             }
-            
+
             UIView.addKeyframe(withRelativeStartTime: 0.75, relativeDuration: 1) {
                 self.spoonImage.transform = .init(rotationAngle: .pi / -18)
                 self.forkImage.transform = .init(rotationAngle: .pi / 18)
             }
         })
-        
+
     }
+//    override func viewDidAppear(_ animated: Bool) {
+//        print("ViewDidAppear")
+//        RequestHelper().reqTask(path: "menu", method: "GET") { [weak self] (result) in
+//        guard let _ = self else { return }
+//            print("request start")
+//            print(result)
+//        }
+//        print("request end")
+//    }
     
     private func setupUI() {
         let logoSize:CGFloat = view.frame.width / 2

@@ -11,7 +11,8 @@ import UIKit
 class MainViewController: UIViewController {
     private let searchController = UISearchController(searchResultsController: nil)
     private var branchList = [String]()
-    private var isWillAppear = false
+    private var subscribeLikeArray: [SubscribeModels]?
+    private var subscribedislikeArray: [SubscribeModels]?
     
     private lazy var flowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -46,8 +47,8 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view Will appear")
-        isWillAppear = true
+        subscribeLikeArray = UserDefaultHelper(key: .favoriteStr).getSubscribe()
+        subscribedislikeArray = UserDefaultHelper(key: .dislike).getSubscribe()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -104,30 +105,33 @@ extension MainViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let subscribeArray = UserDefaultHelper(key: .favoriteStr).getSubscribe()
-        let dislikeArray = UserDefaultHelper(key: .dislike).getSubscribe()
-        guard isWillAppear else { return }
         guard let cell = cell as? MainBranchCollectionViewCell else { return }
-        guard let likes = subscribeArray else { return }
-        guard let dislikes = dislikeArray else { return }
+        guard let likes = subscribeLikeArray else { return }
+        guard let dislikes = subscribedislikeArray else { return }
         var key = highlightSwitch.nothing
-
+        
         Constants.APPDELEGATE.dummy?.contents.forEach { element in
             if element.name == cell.branchName.text {
-                likes.forEach { like in
-                    if (element.menus.lunch.first(where: { $0.contains(like.name) }) != nil) { key = .babPlus }
-                    dislikes.forEach { dislike in
-                        if (element.menus.dinner.first(where: { $0.contains(dislike.name) }) != nil) {
-                            if key == .babPlus { key = .babPlusMinus } else { key = .babMinus }
-                        }
+                for like in likes {
+                    if (element.menus.lunch.first(where: { $0.contains(like.name) }) != nil) {
+                        key = .babPlus
+                        break
                     }
                 }
+                for dislike in dislikes {
+                    if (element.menus.lunch.first(where: { $0.contains(dislike.name) }) != nil) {
+                        if key == .babPlus { key = .babPlusMinus } else { key = .babMinus }
+                        break
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    cell.updateLabel(key: key)
+                }
             }
+            
         }
-        DispatchQueue.main.async {
-            cell.updateLabel(key: key)
-        }
-//        collectionView.reloadItems(at: [indexPath])
+        
         
     }
     

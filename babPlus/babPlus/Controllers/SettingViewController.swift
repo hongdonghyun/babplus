@@ -61,6 +61,7 @@ extension SettingViewController {
         guard let identifier = currentCell?.reuseIdentifier, identifier == IndicatorCell.identifier else { return }
         if let cell = currentCell as? IndicatorCell {
             guard let nextVC = cell.nextVC else { return }
+
             self.navigationController?.pushViewController(nextVC, animated: true)
         }
         

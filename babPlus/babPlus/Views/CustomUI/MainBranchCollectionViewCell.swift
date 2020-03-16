@@ -29,7 +29,7 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     var highlightLabel: UILabel = {
         let label = UILabel()
         label.transform = .init(rotationAngle: .pi / 4)
-        label.isHidden = true
+        label.textColor = .white
         return label
     }()
     
@@ -90,30 +90,36 @@ class MainBranchCollectionViewCell: UICollectionViewCell {
     }
     
     func updateLabel(key: highlightSwitch) {
-        switch key {
-        case .nothing:
-            self.highlightLabel.isHidden = true
+        guard key != .nothing else {
             highlightLabel.removeFromSuperview()
-        default:
-            self.highlightLabel.isHidden = false
-            self.highlightLabel.text = key.rawValue
-            self.highlightLabel.backgroundColor = .blue
-            self.highlightLabel.textColor = .white
-            contentView.addSubview(highlightLabel)
-            highlightLabel.translatesAutoresizingMaskIntoConstraints = false
-            
-            NSLayoutConstraint.activate([
-                highlightLabel.leadingAnchor.constraint(
-                    equalTo: contentView.centerXAnchor,
-                    constant: (cellWidth * 0.11)
-                ),
-                highlightLabel.bottomAnchor.constraint(
-                    equalTo: contentView.centerYAnchor,
-                    constant: -(cellHeight * 0.31)
-                )
-            ])
+            return
         }
+        var labelColor = UIColor.red
+        switch key {
+        case .babMinus:
+            labelColor = .blue
+        case .babPlusMinus:
+            labelColor = .purple
+        default:
+            labelColor = .red
+        }
+        self.highlightLabel.text = key.rawValue
+        self.highlightLabel.backgroundColor = labelColor
+        contentView.addSubview(highlightLabel)
+        highlightLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            highlightLabel.leadingAnchor.constraint(
+                equalTo: contentView.centerXAnchor,
+                constant: (cellWidth * 0.11)
+            ),
+            highlightLabel.bottomAnchor.constraint(
+                equalTo: contentView.centerYAnchor,
+                constant: -(cellHeight * 0.31)
+            )
+        ])
     }
+    
     
     func configure(branchName name: String) {
         guard let cacheData = UserDefaultHelper(key: .imageKey).getImage() else { return }

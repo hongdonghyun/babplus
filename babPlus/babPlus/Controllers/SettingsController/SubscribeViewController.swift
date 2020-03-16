@@ -34,6 +34,7 @@ class SubscribeViewController: UIViewController {
     public var likeKey: keyEnums!
     private var keyboardHeight: CGFloat = 0
     lazy var userDefault = UserDefaultHelper(key: likeKey)
+    
     private var userSubscribeArray: [String] {
         guard let array = userDefault.getSubscribe() else { return [""] }
         return array.map { $0.name }
@@ -50,12 +51,18 @@ class SubscribeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.tabBarController?.tabBar.isHidden = true
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(keyboardWillShow),
             name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 

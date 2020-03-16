@@ -19,21 +19,22 @@ struct RequestHelper {
     }
 
     func reqTask(path: String = "menu", method: String = "GET", completion: @escaping (BabMenu) -> ()) {
+        print("1. call reqTask")
         let task = URLSession.shared.dataTask(with: RequestHelper().request(urlPath: path, method: method)!) {
             data, response, error in
             if let res = response as? HTTPURLResponse {
-                if (200...300).contains(res.statusCode) {
-                    if let data = data, let body = try? JSONDecoder().decode(BabMenu.self, from: data) {
+                if (200..<300).contains(res.statusCode) {
+                    if let data = data, let body = try?
+                        JSONDecoder().decode(BabMenu.self, from: data) {
+                        print("2. before completion")
                         completion(body)
-                    } else {
-                        print("parse Error")
-                    }
-                }
-            } else {
-                print("Error")
-            }
+                        print("3. after completion")
+                    } else { print("parse Error") }
+                } else { print("Server Error")}
+            } else { print("Error") }
             
         }
         task.resume()
+        print("4. end reqTask")
     }
 }

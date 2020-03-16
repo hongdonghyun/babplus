@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let launchScreen = LaunchViewController()
         window?.rootViewController = launchScreen
         window?.makeKeyAndVisible()
+        
         return true
     }
 

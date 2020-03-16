@@ -13,5 +13,6 @@ class FavoriteViewController: SubscribeViewController {
         super.viewWillAppear(true)
         super.likeKey = keyEnums.favoriteStr
         menuTextField.placeholder = "좋아하는 음식을 입력하세요."
+        
     }
 }
